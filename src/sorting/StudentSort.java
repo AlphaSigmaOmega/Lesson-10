@@ -18,7 +18,8 @@ public class StudentSort extends javax.swing.JFrame {
     }
     
     ////////////////////////////////////////////////////////////////
-
+    //Modified to work with issstudent
+    //original was only for integers
 public static void selectionSort(issstudent[] a){
    for (int i = 0; i < a.length - 1; i++){
       int minIndex = findMinimum(a, i);
