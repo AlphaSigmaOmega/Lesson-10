@@ -9,6 +9,9 @@ public class Sorting extends javax.swing.JFrame {
     int nums[] = new int[50000];
     DefaultListModel list;
     boolean sorted=false;
+    long startTime;
+    long endTime;
+    long totalTime;
 
     public Sorting() {
         initComponents();
@@ -39,17 +42,28 @@ public class Sorting extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lstNums = new javax.swing.JList<>();
-        btnBubble = new javax.swing.JButton();
-        btnSelection = new javax.swing.JButton();
-        btnInsertion = new javax.swing.JButton();
-        btnQuick = new javax.swing.JButton();
         lblTime = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnBubble = new javax.swing.JButton();
+        btnInsertion = new javax.swing.JButton();
+        btnSelection = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         btnGenerate = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        btnQuick = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lstNums.setFont(new java.awt.Font("OCR A Extended", 1, 24)); // NOI18N
         jScrollPane1.setViewportView(lstNums);
 
+        lblTime.setFont(new java.awt.Font("OCR A Extended", 0, 16)); // NOI18N
+        lblTime.setText("Time Lapsed =?");
+        lblTime.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnBubble.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnBubble.setText("Bubble Sort");
         btnBubble.setToolTipText("");
         btnBubble.addActionListener(new java.awt.event.ActionListener() {
@@ -58,13 +72,7 @@ public class Sorting extends javax.swing.JFrame {
             }
         });
 
-        btnSelection.setText("Selection Sort");
-        btnSelection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectionActionPerformed(evt);
-            }
-        });
-
+        btnInsertion.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnInsertion.setText("Insertion Sort");
         btnInsertion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +80,71 @@ public class Sorting extends javax.swing.JFrame {
             }
         });
 
+        btnSelection.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        btnSelection.setText("Selection Sort");
+        btnSelection.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBubble, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInsertion, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btnBubble)
+                .addGap(9, 9, 9)
+                .addComponent(btnSelection)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnInsertion)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnGenerate.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        btnGenerate.setText("Generate Numbers");
+        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerateActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGenerate)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnQuick.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnQuick.setText("Quick Sort");
         btnQuick.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,16 +152,22 @@ public class Sorting extends javax.swing.JFrame {
             }
         });
 
-        lblTime.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lblTime.setText("Time Lapsed =?");
-        lblTime.setBorder(new javax.swing.border.MatteBorder(null));
-
-        btnGenerate.setText("Generate Numbers");
-        btnGenerate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGenerateActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(btnQuick, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnQuick)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,51 +176,60 @@ public class Sorting extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lblTime)
-                        .addComponent(btnBubble, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSelection, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                        .addComponent(btnInsertion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnQuick, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(104, 104, 104))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnGenerate)
-                .addGap(24, 24, 24)
-                .addComponent(btnBubble)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSelection)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInsertion)
-                .addGap(77, 77, 77)
-                .addComponent(lblTime)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addComponent(btnQuick)
-                .addGap(118, 118, 118))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(78, 78, 78)
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(103, 103, 103))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBubbleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBubbleActionPerformed
-        //Start Timer
+        
         if(sorted){
             JOptionPane.showMessageDialog(this, "The List is already sorted - generate new numbers first.");
             return; //don't do the sort, leave now instead
         }
+        //Start Timer
+        startTime = System.currentTimeMillis();
         bubbleSort(nums);
         sorted=true;
         //End Timer
+        endTime   = System.currentTimeMillis();
+        totalTime = endTime - startTime;
+        lblTime.setText("Time Lapsed = " + totalTime + " Miliseconds, or " + totalTime/1000.000 + " Seconds");
         printList();
         
     }//GEN-LAST:event_btnBubbleActionPerformed
@@ -151,9 +239,14 @@ public class Sorting extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The List is already sorted - generate new numbers first.");
             return; //don't do the sort, leave now instead
         }
+        //Start Timer
+        startTime = System.currentTimeMillis();
         selectionSort(nums);
         sorted=true;
         //End Timer
+        endTime   = System.currentTimeMillis();
+        totalTime = endTime - startTime;
+        lblTime.setText("Time Lapsed = " + totalTime + " Miliseconds, or " + totalTime/1000.000 + " Seconds");
         printList();
     }//GEN-LAST:event_btnSelectionActionPerformed
 
@@ -162,9 +255,14 @@ public class Sorting extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "The List is already sorted - generate new numbers first.");
             return; //don't do the sort, leave now instead
         }
+        //Start Timer
+        startTime = System.currentTimeMillis();
         insertionSort(nums);
         sorted=true;
         //End Timer
+        endTime   = System.currentTimeMillis();
+        totalTime = endTime - startTime;
+        lblTime.setText("Time Lapsed = " + totalTime + " Miliseconds, or " + totalTime/1000.000 + " Seconds");
         printList();
     }//GEN-LAST:event_btnInsertionActionPerformed
 
@@ -294,6 +392,9 @@ public class Sorting extends javax.swing.JFrame {
     private javax.swing.JButton btnInsertion;
     private javax.swing.JButton btnQuick;
     private javax.swing.JButton btnSelection;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTime;
     private javax.swing.JList<String> lstNums;
