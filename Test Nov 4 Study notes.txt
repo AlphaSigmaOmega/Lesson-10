@@ -1,0 +1,76 @@
+Dec 4 Code Test
+===========================================
+Part A - Definitions / Matching Def to Name
+===========================================
+----------
+WORD BANK:
+----------
+Casting an Object - taking an Object of one particular type and “turning it into” 
+					another Object type.
+Protected Variables - variables, are variables that are visible only to the class 
+					  to which they belong.
+Abstract Classes - classes that contain one or more abstract methods.
+Overloading Methods - a feature that allows a class to have more than one method 
+					  having the same name, if their argument lists are different
+Overriding Methods - Same method from parent defined in child (wheel overrides toString)
+Exclusive Methods - A method that a child class can do, that the parent can't do
+Instance Methods -
+Static Methods - 
+Final Methods - 
+Abstract Methods - a method that is declared, but contains no implementation.
+Parent Class - 
+Child Class - 
+Concrete Class - Opposite of abstract, default behaviour of a class, you can instantiate
+Protected Variables - 
+Instance Variable - 
+Interface -
+Inheritence -
+Extends -
+Implements - 
+Polymorphism - Ability for an object to take on abilities of different objects.
+Super -
+
+-----------
+===================
+Part B - Algorithms
+===================
+-------------------------
+Sorting -> 7 unsorted numbers
+		-> Show the first 5 moves using each algorithm (Bubble, Selection, Insertion)
+Insert/Remove	-> Sorted list of 4 names in a String Array
+				-> Show steps to insert the name and delete the name
+Searching -> Explain the difference between a Linear Search & a Binary Search
+------------------------
+========================
+Part C - Coding 1-Liners
+========================
+-Have Child Call Parent toString:
+	>
+-Declare instance variable and make available to Child Classes:
+	>
+-Make a class a child of another class:
+	>
+-Make a class that connects to an interface:
+	>
+-Declare a class level constant(final) value:
+	>
+-Add an item to a specific location in an arrayListist:
+	>
+-Create an arrayList to hold a specific type of object:
+	>
+-Delete an item from an arrayList at a given location:
+	>
+-Loop through an arrayList using the 'For loop' style "For each item in list":
+	>For(Zombie z: badguys){
+	>"Let 'z' represent each zombie in the badguys arrayList"
+-Call a parent constructor:
+	>
+-Declare class that will be searchable and sortable:
+	>
+-Crate an object that is a member of both a parent and child:
+	>
+-Run an exclusive method found in a child class through an object 
+ that belongs to both parent and child:
+	>
+-Copy an item in an array to the location before it:
+	>
